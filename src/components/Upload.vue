@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import S3 from 'aws-sdk/clients/s3'
+import { storageService } from '@/services/storage'
 import { guid } from '@/util/helpers'
 import Cropper from 'cropperjs'
 import 'cropperjs/dist/cropper.css'
@@ -141,31 +141,19 @@ export default {
       this.fileRaw = ''
     },
     async uploadToS3 () {
-      const bucket = new S3({
-        accessKeyId: process.env.VUE_APP_AWS_S3_ID,
-        secretAccessKey: process.env.VUE_APP_AWS_S3_KEY,
-        region: process.env.VUE_APP_AWS_S3_REGION
-      })
-
       const name = this.fileRaw.name
       const ext = name.match(/.jpg|.jpeg|.png$/i)[0]
       const date = new Date().toJSON().substr(0, 10)
       const file = `${date}-${guid()}${ext}`
       const key = `upload/${file}`
-      const croppedImage = await this.getCroppedImage()
-
-      return new Promise((resolve, reject) => {
-        bucket.putObject({
-          Bucket: process.env.VUE_APP_AWS_S3_BASKET,
-          Key: key,
-          ContentType: this.fileRaw.type,
-          Body: croppedImage.blob
-        }, (err, data) => {
-          if (err) return reject(err)
-          const res = process.env.VUE_APP_AWS_S3_URL + '/' + key
-          return resolve(res)
-        })
-      })
+      
+      try {
+        const croppedImage = await this.getCroppedImage()
+        return await storageService.uploadFile(croppedImage.blob, key)
+      } catch (error) {
+        this.$message.error('Failed to upload image')
+        throw error
+      }
     },
     changeAspectRation (aspect) {
       this.aspectRatio = aspect

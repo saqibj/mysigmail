@@ -3,6 +3,7 @@ import {
   saveProject,
   updateProjectById
 } from '../../db/indexedDB'
+import { AppError } from '@/utils/error-handler'
 
 export default {
   state: {
@@ -22,28 +23,38 @@ export default {
   },
   actions: {
     async getProjects ({ commit }) {
-      let res = await getAllProjects()
-      res = res.filter(i => i.id !== 'currentProject')
-      commit('SET_PROJECTS', res)
+      try {
+        let res = await getAllProjects()
+        res = res.filter(i => i.id !== 'currentProject')
+        commit('SET_PROJECTS', res)
+      } catch (error) {
+        console.error('Failed to get projects:', error)
+        throw new AppError(`Failed to fetch projects: ${error.message}`, 'FETCH_ERROR')
+      }
     },
     async newProject ({ commit, dispatch, state, rootState }, data) {
-      dispatch('resetProject')
+      try {
+        dispatch('resetProject')
 
-      const project = {
-        template: 'SignatureTemplate1',
-        basic: { ...rootState.basic },
-        options: { ...rootState.options },
-        addons: {
-          installed: []
-        },
-        socials: {
-          installed: []
+        const project = {
+          template: 'SignatureTemplate1',
+          basic: { ...rootState.basic },
+          options: { ...rootState.options },
+          addons: {
+            installed: []
+          },
+          socials: {
+            installed: []
+          }
         }
-      }
 
-      await saveProject(project)
-      await dispatch('getProjects')
-      await dispatch('setProject', state.projects[state.projects.length - 1])
+        await saveProject(project)
+        await dispatch('getProjects')
+        await dispatch('setProject', state.projects[state.projects.length - 1])
+      } catch (error) {
+        console.error('Failed to create new project:', error)
+        throw new AppError(`Failed to create project: ${error.message}`, 'CREATE_ERROR')
+      }
     },
     async importProject ({ state, commit, dispatch, rootState }, data) {
       await saveProject(data)

@@ -10,8 +10,9 @@ let tx = ''
  */
 function openDB () {
   if (!window.indexedDB) {
-    window.alert('Browser not support IndexedDB')
-    throw new Error('Browser not support IndexedDB')
+    const error = new AppError('Browser does not support IndexedDB', 'BROWSER_UNSUPPORTED')
+    console.error(error)
+    throw error
   }
 
   request = window.indexedDB.open(dbname, version)
@@ -22,8 +23,7 @@ function openDB () {
   }
 
   request.onerror = e => {
-    throw new Error('The database is opened failed')
-    // console.warn('The database is opened failed')
+    handleDatabaseError(e.target.error)
   }
 }
 
@@ -35,17 +35,21 @@ function openDB () {
 function onSuccess (cb) {
   return new Promise((resolve, reject) => {
     request.onsuccess = e => {
-      db = e.target.result
-      tx = db.transaction('store', 'readwrite')
-      store = tx.objectStore('store')
+      try {
+        db = e.target.result
+        tx = db.transaction('store', 'readwrite')
+        store = tx.objectStore('store')
 
-      db.onerror = e => {
-        reject(new Error(e))
+        db.onerror = e => {
+          reject(new AppError(e.target.error.message, 'DB_ERROR'))
+        }
+
+        cb(resolve)
+
+        tx.oncomplete = e => db.close()
+      } catch (error) {
+        reject(new AppError(`Transaction failed: ${error.message}`, 'TX_ERROR'))
       }
-
-      cb(resolve)
-
-      tx.oncomplete = e => db.close()
     }
   })
 }

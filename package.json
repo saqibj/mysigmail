@@ -1,25 +1,27 @@
 {
   "name": "email-signature-generator",
-  "version": "1.12.0",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "release": "sh ./build/bin/release.sh",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "aws-sdk": "^2.408.0",
+    "@aws-sdk/client-s3": "^3.0.0",
     "chalk": "^2.4.2",
-    "cropperjs": "^1.4.3",
-    "element-ui": "^2.4.9",
+    "cropperjs": "^1.5.13",
+    "element-plus": "^2.0.0",
     "nprogress": "^0.2.0",
-    "vue": "^2.5.17",
+    "vue": "^3.3.0",
     "vue-analytics": "^5.16.0",
-    "vue-router": "^3.0.1",
+    "vue-router": "^4.0.0",
     "vue-social-sharing": "^2.4.3",
     "vuedraggable": "^2.16.0",
-    "vuex": "^3.0.1"
+    "pinia": "^2.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.0",
@@ -28,14 +30,21 @@
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.1",
     "dotenv": "^6.2.0",
-    "eslint": "^5.8.0",
-    "eslint-plugin-vue": "^5.0.0-0",
+    "eslint": "^8.0.0",
+    "eslint-plugin-vue": "^9.0.0",
     "lint-staged": "^8.1.0",
     "lodash-es": "^4.17.11",
-    "node-sass": "^4.11.0",
+    "sass": "^1.69.0",
     "sass-loader": "^7.0.1",
     "vue-svg-loader": "^0.11.0",
-    "vue-template-compiler": "^2.5.17"
+    "vue-template-compiler": "^2.5.17",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "typescript": "^5.0.0",
+    "prettier": "^3.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "vitest": "^0.34.0",
+    "@vue/test-utils": "^2.4.0"
   },
   "gitHooks": {
     "pre-commit": "lint-staged",

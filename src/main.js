@@ -11,15 +11,10 @@ import 'nprogress/nprogress.css'
 import VueAnalytics from 'vue-analytics'
 import SocialSharing from 'vue-social-sharing'
 import SvgIcon from './components/SvgIcon'
+import { getAnalyticsConfig } from './config/analytics'
 Vue.component('svg-icon', SvgIcon)
 
-Vue.use(VueAnalytics, {
-  id: process.env.VUE_APP_GA || 'XX-XXXXXXXX-X',
-  debug: {
-    enabled: false,
-    sendHitTask: process.env.NODE_ENV === 'production'
-  }
-})
+Vue.use(VueAnalytics, getAnalyticsConfig())
 
 Vue.mixin({
   methods: {

@@ -157,7 +157,10 @@ export default {
           this.$store.dispatch('newProject')
         }
       } catch (err) {
-
+        if (err.name !== 'Cancel') {
+          this.$message.error(`Failed to delete project: ${err.message}`)
+          console.error('Project deletion error:', err)
+        }
       }
     },
 
