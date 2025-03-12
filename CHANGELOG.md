@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.0] - 2024-03-12
 
 ### Added
+
 - TypeScript support
 - Vitest testing framework integration
 - Improved error handling with centralized error management
@@ -15,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Comprehensive documentation and quickstart guide
 
 ### Changed
+
 - Upgraded to Vue 3.3.0
 - Migrated from Vuex to Pinia for state management
 - Upgraded to Element Plus from Element UI
@@ -24,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated all major dependencies to latest versions
 
 ### Removed
+
 - Legacy Vue 2.x support
 - Deprecated Vuex store implementation
 - Old AWS SDK v2 implementation
@@ -31,6 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.12.0] - Previous Version
 
 ### Features
+
 - Vue.js + Vuex for state management
 - Element UI components
 - AWS S3 integration for image storage
@@ -44,9 +48,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Local project storage
 
 ### Technical Stack
+
 - Vue 2.x
 - Element UI
 - AWS SDK v2
 - Vue Router
 - Vue Analytics
-- CropperJS for image handling 
+- CropperJS for image handling

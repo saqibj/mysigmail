@@ -15,12 +15,14 @@ A modern email signature generator built with Vue.js that allows users to create
 ## Quick Setup
 
 1. **Clone the repository**
+
 ```bash
 git clone <repository-url>
 cd email-signature-generator
 ```
 
 2. **Install dependencies**
+
 ```bash
 npm install
 # or
@@ -29,6 +31,7 @@ yarn install
 
 3. **Configure environment variables**
 Create a `.env` file in the root directory:
+
 ```env
 VUE_APP_AWS_S3_REGION=your-aws-region
 VUE_APP_AWS_S3_ID=your-aws-access-key-id
@@ -39,6 +42,7 @@ VUE_APP_GA=your-google-analytics-id
 ```
 
 4. **Start development server**
+
 ```bash
 npm run serve
 # or
@@ -46,6 +50,7 @@ yarn serve
 ```
 
 5. **Build for production**
+
 ```bash
 npm run build
 # or
@@ -55,6 +60,7 @@ yarn build
 ## Migration Guide (1.x to 2.0)
 
 ### Breaking Changes
+
 - Vue 2.x to Vue 3.x migration
 - Vuex to Pinia state management
 - Element UI to Element Plus
@@ -63,12 +69,14 @@ yarn build
 ### Step-by-Step Migration
 
 1. **Backup Your Project**
+
 ```bash
 # Create a backup of your current project
 cp -r email-signature-generator email-signature-generator-backup
 ```
 
 2. **Update Dependencies**
+
 ```bash
 # Remove old dependencies
 rm -rf node_modules package-lock.json
@@ -78,8 +86,10 @@ npm install
 ```
 
 3. **Update Vue Components**
+
 - Convert Options API to Composition API
 - Update template syntax for Vue 3
+
 ```vue
 <!-- Old Format -->
 <template>
@@ -106,7 +116,9 @@ const message = ref('Hello')
 ```
 
 4. **State Management Migration**
+
 - Convert Vuex stores to Pinia
+
 ```js
 // Old Vuex Store
 export default {
@@ -124,7 +136,9 @@ export const useStore = defineStore('main', {
 ```
 
 5. **UI Component Updates**
+
 - Replace Element UI with Element Plus
+
 ```js
 // Old imports
 import ElementUI from 'element-ui'
@@ -136,7 +150,9 @@ import 'element-plus/dist/index.css'
 ```
 
 6. **AWS SDK Migration**
+
 - Update AWS S3 implementation
+
 ```js
 // Old AWS SDK v2
 import AWS from 'aws-sdk'
@@ -148,9 +164,11 @@ const s3Client = new S3Client(config)
 ```
 
 7. **TypeScript Integration**
+
 - Add TypeScript configuration
 - Convert .js files to .ts
 - Add type definitions
+
 ```bash
 # Add TypeScript
 npm install typescript @types/node --save-dev
@@ -162,16 +180,19 @@ npx tsc --init
 ### Data Migration
 
 1. **Local Storage**
+
 - IndexedDB data structure remains compatible
 - No action required for existing signatures
 
 2. **Project Files**
+
 - Templates remain compatible
 - Social media configurations need manual update
 
 ### Post-Migration Steps
 
 1. **Testing**
+
 ```bash
 # Run tests
 npm run test
@@ -181,12 +202,14 @@ npm run type-check
 ```
 
 2. **Verify Features**
+
 - Test signature generation
 - Verify image uploads
 - Check social media integration
 - Validate template rendering
 
 3. **Performance Verification**
+
 - Run Lighthouse audit
 - Check bundle size
 - Verify load times
@@ -194,20 +217,24 @@ npm run type-check
 ### Common Migration Issues
 
 1. **Component Lifecycle Changes**
+
 - `beforeDestroy` → `onBeforeUnmount`
 - `destroyed` → `onUnmounted`
 
 2. **Event Handling**
+
 - `.native` modifier removed
 - `$listeners` replaced with `v-on="$attrs"`
 
 3. **Slots Syntax**
+
 - Scope slots simplified
 - Named slots syntax updated
 
 ### Need Help?
 
 If you encounter issues during migration:
+
 1. Check the [Migration Guide](https://v3.vuejs.org/guide/migration/introduction.html)
 2. Review [Element Plus Migration](https://element-plus.org/en-US/guide/migration.html)
 3. Open an issue in our repository
@@ -235,7 +262,7 @@ If you encounter issues during migration:
 
 - Supported formats: JPG, PNG
 - Maximum file size: 5MB
-- Recommended dimensions: 
+- Recommended dimensions:
   - Profile pictures: 200x200px
   - Logos: 300x100px
 
@@ -285,6 +312,7 @@ If you encounter issues during migration:
 ### Support
 
 For additional support:
+
 - Check the [Issues](issues) section
 - Contact the development team
 - Review the documentation
@@ -292,6 +320,7 @@ For additional support:
 ## Development
 
 ### Project Structure
+
 ```
 email-signature-generator/
 ├── src/

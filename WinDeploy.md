@@ -1,16 +1,18 @@
-# Windows Deployment Guide
+# Windows Deployment Guide for Email Signature Generator
 
 This guide provides step-by-step instructions for deploying the Email Signature Generator on Windows 10/11.
 
 ## System Requirements
 
 ### Hardware Requirements
+
 - CPU: 2 cores or more
 - RAM: 4GB minimum (8GB recommended)
 - Storage: 1GB free space minimum
 - Internet connection
 
 ### Software Requirements
+
 - Windows 10/11 (64-bit)
 - Node.js LTS (v14 or higher)
 - Git
@@ -20,6 +22,7 @@ This guide provides step-by-step instructions for deploying the Email Signature 
 ## Pre-Installation Steps
 
 1. **Install Node.js**
+
    ```powershell
    # Using winget (Windows Package Manager)
    winget install OpenJS.NodeJS.LTS
@@ -30,6 +33,7 @@ This guide provides step-by-step instructions for deploying the Email Signature 
    ```
 
 2. **Install Git**
+
    ```powershell
    winget install Git.Git
    
@@ -38,11 +42,13 @@ This guide provides step-by-step instructions for deploying the Email Signature 
    ```
 
 3. **Install Windows Terminal (Optional but recommended)**
+
    ```powershell
    winget install Microsoft.WindowsTerminal
    ```
 
 4. **Configure Git (if not already configured)**
+
    ```powershell
    git config --global user.name "Your Name"
    git config --global user.email "your.email@example.com"
@@ -51,6 +57,7 @@ This guide provides step-by-step instructions for deploying the Email Signature 
 ## Installation Steps
 
 1. **Create Project Directory**
+
    ```powershell
    # Navigate to desired location (example: Documents)
    cd $env:USERPROFILE\Documents
@@ -61,11 +68,13 @@ This guide provides step-by-step instructions for deploying the Email Signature 
    ```
 
 2. **Clone Repository**
+
    ```powershell
    git clone <repository-url> .
    ```
 
 3. **Install Dependencies**
+
    ```powershell
    # Install dependencies
    npm install
@@ -75,6 +84,7 @@ This guide provides step-by-step instructions for deploying the Email Signature 
    ```
 
 4. **Configure Environment**
+
    ```powershell
    # Create .env file
    Copy-Item .env.example .env
@@ -82,8 +92,9 @@ This guide provides step-by-step instructions for deploying the Email Signature 
    # Open .env in notepad to edit
    notepad .env
    ```
-   
+
    Add your configuration:
+
    ```env
    VUE_APP_AWS_S3_REGION=your-aws-region
    VUE_APP_AWS_S3_ID=your-aws-access-key-id
@@ -106,6 +117,7 @@ This guide provides step-by-step instructions for deploying the Email Signature 
    - Enable public access (required for image hosting)
 
 3. **Configure CORS**
+
    ```json
    [
        {
@@ -125,17 +137,19 @@ This guide provides step-by-step instructions for deploying the Email Signature 
 ## Development Server
 
 1. **Start Development Server**
+
    ```powershell
    npm run serve
    ```
 
 2. **Access Application**
-   - Open browser: http://localhost:8080
+   - Open browser: <http://localhost:8080>
    - Test basic functionality
 
 ## Production Deployment
 
 1. **Build Application**
+
    ```powershell
    # Create production build
    npm run build
@@ -145,6 +159,7 @@ This guide provides step-by-step instructions for deploying the Email Signature 
    ```
 
 2. **Serve Production Build (Optional)**
+
    ```powershell
    # Install serve globally
    npm install -g serve
@@ -165,6 +180,7 @@ This guide provides step-by-step instructions for deploying the Email Signature 
    - Enable IIS Management Console
 
 2. **Configure IIS**
+
    ```powershell
    # Install URL Rewrite Module (if not installed)
    Start-Process "https://www.iis.net/downloads/microsoft/url-rewrite"
@@ -175,6 +191,7 @@ This guide provides step-by-step instructions for deploying the Email Signature 
 
 3. **Add web.config**
    Create `web.config` in the dist folder:
+
    ```xml
    <?xml version="1.0" encoding="UTF-8"?>
    <configuration>
@@ -204,6 +221,7 @@ This guide provides step-by-step instructions for deploying the Email Signature 
    - Solution: Add Node.js to PATH or reinstall
 
 2. **Permission Errors**
+
    ```powershell
    # Run PowerShell as Administrator
    Start-Process powershell -Verb RunAs
@@ -213,6 +231,7 @@ This guide provides step-by-step instructions for deploying the Email Signature 
    ```
 
 3. **Port Conflicts**
+
    ```powershell
    # Find process using port 8080
    netstat -ano | findstr :8080
@@ -229,6 +248,7 @@ This guide provides step-by-step instructions for deploying the Email Signature 
 ## Maintenance
 
 1. **Update Dependencies**
+
    ```powershell
    # Check outdated packages
    npm outdated
@@ -238,6 +258,7 @@ This guide provides step-by-step instructions for deploying the Email Signature 
    ```
 
 2. **Backup**
+
    ```powershell
    # Backup dist folder
    Copy-Item -Recurse dist dist_backup
@@ -254,6 +275,7 @@ This guide provides step-by-step instructions for deploying the Email Signature 
 ## Security Considerations
 
 1. **File Permissions**
+
    ```powershell
    # Set appropriate NTFS permissions
    icacls "C:\inetpub\wwwroot\email-signature-generator" /grant "IIS_IUSRS:(OI)(CI)(RX)"
@@ -272,6 +294,7 @@ This guide provides step-by-step instructions for deploying the Email Signature 
 ## Support
 
 For additional support:
+
 1. Check the [Issues](issues) section
 2. Review Windows-specific documentation
-3. Contact the development team 
+3. Contact the development team
