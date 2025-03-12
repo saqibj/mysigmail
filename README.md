@@ -1,4 +1,4 @@
-# Email Signature Generator - Quickstart Guide
+# Email Signature Generator
 
 A modern email signature generator built with Vue.js that allows users to create, customize, and manage professional email signatures.
 
@@ -30,7 +30,6 @@ yarn install
 ```
 
 3. **Configure environment variables**
-Create a `.env` file in the root directory:
 
 ```env
 VUE_APP_AWS_S3_REGION=your-aws-region
@@ -87,9 +86,6 @@ npm install
 
 3. **Update Vue Components**
 
-- Convert Options API to Composition API
-- Update template syntax for Vue 3
-
 ```vue
 <!-- Old Format -->
 <template>
@@ -117,8 +113,6 @@ const message = ref('Hello')
 
 4. **State Management Migration**
 
-- Convert Vuex stores to Pinia
-
 ```js
 // Old Vuex Store
 export default {
@@ -137,8 +131,6 @@ export const useStore = defineStore('main', {
 
 5. **UI Component Updates**
 
-- Replace Element UI with Element Plus
-
 ```js
 // Old imports
 import ElementUI from 'element-ui'
@@ -151,8 +143,6 @@ import 'element-plus/dist/index.css'
 
 6. **AWS SDK Migration**
 
-- Update AWS S3 implementation
-
 ```js
 // Old AWS SDK v2
 import AWS from 'aws-sdk'
@@ -164,10 +154,6 @@ const s3Client = new S3Client(config)
 ```
 
 7. **TypeScript Integration**
-
-- Add TypeScript configuration
-- Convert .js files to .ts
-- Add type definitions
 
 ```bash
 # Add TypeScript
@@ -313,9 +299,9 @@ If you encounter issues during migration:
 
 For additional support:
 
-- Check the [Issues](issues) section
-- Contact the development team
-- Review the documentation
+1. Check the [Issues](issues) section
+2. Contact the development team
+3. Review the documentation
 
 ## Development
 

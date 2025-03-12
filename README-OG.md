@@ -3,11 +3,14 @@
 > **Warning**: Project is no longer maintained, and may have bugs and security issues. Feel free to fork but no pull request or security alert will be answered.
 
 ![MySigMail Logo](./logo.png)
+
 ![Screenshot](./screenshot.png)
 
-**Website**: [https://mysigmail.com](https://mysigmail.com) | **Twitter**: [@mysigmail](https://twitter.com/mysigmail)
-
 [![Product Hunt](https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=142330&theme=dark&period=daily)](https://www.producthunt.com/posts/mysigmail-2)
+
+**Links**:
+- **Website**: [https://mysigmail.com](https://mysigmail.com)
+- **Twitter**: [@mysigmail](https://twitter.com/mysigmail)
 
 ## Purpose
 
@@ -25,7 +28,7 @@ So let's make creating email signatures easier!
 - **Options**: Customize your signature as you like, change color, avatar shape, font and more
 - **Addons**: Additional options such as disclaimer, mobile application badges
 - **Templates**: Templates for signature (so far, only one template)
-- **Projects**: Ability to save, download or import a previously created signature. No need to create an account, everything is already available in the browser
+- **Projects**: Ability to save, download or import a previously created signature
 - **Signature preview**: Hot reloading preview
 
 ## Roadmap
@@ -58,11 +61,11 @@ npm run serve
 
 If you liked the project, we appreciate your support:
 
-- Bitcoin: `1di5dpLQpcryUke4e5eq1NJv4if9faLhJ`
-- [PayPal](https://www.paypal.me/antonreshetov)
-- [Become a backer on Patreon](https://www.patreon.com/antonreshetov)
-- [Become a backer on Open Collective](https://opencollective.com/mysigmail)
-- [Become a backer on Ko-fi](https://ko-fi.com/antonreshetov)
+- **Bitcoin**: `1di5dpLQpcryUke4e5eq1NJv4if9faLhJ`
+- **PayPal**: [Donate](https://www.paypal.me/antonreshetov)
+- **Patreon**: [Become a backer](https://www.patreon.com/antonreshetov)
+- **Open Collective**: [Become a backer](https://opencollective.com/mysigmail)
+- **Ko-fi**: [Buy me a coffee](https://ko-fi.com/antonreshetov)
 
 ## Commercialization
 
